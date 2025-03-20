@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+      - name: Trigger workflow in other repo
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GHA_WORKFLOW_TRIGGER }}
+          script: |
+            const result = await github.rest.actions.createWorkflowDispatch({
+              owner: 'sitcon-tw',
+              repo: 'camp',
+              workflow_id: 'updateSubmodules.yml',
+              ref: 'gh-pages'
+            })
+            console.log(result)
