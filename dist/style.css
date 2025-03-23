@@ -340,17 +340,17 @@ footer h3 {
 }
 
 .footer-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 5rem;
-    padding: 0 2rem 4rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
-.footer-container > div {
-    flex: 1;
-    width: 100%;
+
+.history {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .history a {
@@ -419,6 +419,8 @@ footer h3 {
 
     .footer-container{
         gap: .5rem;
+        padding: 2rem;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
