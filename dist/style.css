@@ -372,7 +372,7 @@ footer h3 {
 @media (max-width: 1050px) {
     .intro-img {
         position: static;
-        transform: rotate(5deg);
+        transform: rotate(5deg) scale(0.9);
         margin: 4rem auto;
         width: 500px;
         max-width: 100%;
