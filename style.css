@@ -16,8 +16,7 @@ body {
     font-family: "GenRyuMin2 TW", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;
-    background-color: #201814;
-    background: url(img/background.svg);
+    background: #201814 url(img/background.svg);
     background-size: 7rem;
     color: #fff;
     overflow-x: hidden;
@@ -330,9 +329,8 @@ footer::before {
     left: 0;
     width: 100%;
     height: 15rem;
-    background: url(img/zigzag.svg);
     background-size: auto 100%;
-    background-repeat: repeat-x;
+    background: url(img/zigzag.svg) repeat-x;
     z-index: -1;
 }
 
@@ -342,17 +340,17 @@ footer h3 {
 }
 
 .footer-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 5rem;
-    padding: 0 2rem 4rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
-.footer-container > div {
-    flex: 1;
-    width: 100%;
+
+.history {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .history a {
@@ -374,7 +372,7 @@ footer h3 {
 @media (max-width: 1050px) {
     .intro-img {
         position: static;
-        transform: rotate(5deg);
+        transform: rotate(5deg) scale(0.9);
         margin: 4rem auto;
         width: 500px;
         max-width: 100%;
@@ -421,6 +419,8 @@ footer h3 {
 
     .footer-container{
         gap: .5rem;
+        padding: 2rem;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
