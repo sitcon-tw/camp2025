@@ -344,6 +344,10 @@ footer h3 {
     max-width: 1200px;
     margin: auto;
 }
+.footer-container > div {
+    flex: 1;
+    width: 100%;
+}
 
 .history a {
     padding-right: 1rem;
@@ -351,6 +355,7 @@ footer h3 {
 
 .social {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -406,6 +411,10 @@ footer h3 {
     }
     .intro-img {
         margin-bottom: 2rem;
+    }
+
+    .footer-container{
+        gap: .5rem;
     }
 }
 
