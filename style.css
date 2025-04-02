@@ -39,6 +39,7 @@ header {
     padding-bottom: 17vh;
     min-height: 100vh; /* browser support */
     min-height: 100svh;
+    user-select: none;
 }
 
 img {
@@ -149,6 +150,11 @@ h1 span {
     transform: rotate(-3deg);
     color: var(--theme);
     cursor: default;
+    transition: all 0.2s ease-out;
+}
+
+#year:active{
+    transform: scale(0.93) rotate(-3deg);
 }
 
 #marquee {
