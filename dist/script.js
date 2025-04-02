@@ -41,3 +41,24 @@ document.addEventListener("keydown", e => {
     )
         ad();
 });
+
+// Scroll to top button
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+function toggleScrollToTopButton() {
+    if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add("visible");
+    } else {
+        scrollToTopBtn.classList.remove("visible");
+    }
+}
+
+scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+window.addEventListener("scroll", toggleScrollToTopButton);
+toggleScrollToTopButton(); // Check initial state
