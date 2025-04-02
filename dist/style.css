@@ -138,7 +138,6 @@ h1 {
     transform: rotate(0.9deg);
     line-height: 1.3;
     transition-duration: 1s;
-    user-select: none;
 }
 
 h1 span {
@@ -149,11 +148,7 @@ h1 span {
     display: block;
     transform: rotate(-3deg);
     color: var(--theme);
-    transition: all 0.2s ease-out;
-}
-
-#year:active{
-    transform: scale(0.93) rotate(-3deg);
+    cursor: default;
 }
 
 #marquee {
@@ -553,5 +548,28 @@ body.easter-egg::before {
 @media (max-width: 768px) {
     body.easter-egg::before {
         font-size: 3rem;
+    }
+}
+
+/* Damage number effect */
+.damage-number {
+    position: absolute;
+    color: #ff6666;
+    font-weight: bold;
+    font-size: 1.5rem;
+    animation: damage-animation 1s forwards;
+    pointer-events: none;
+    z-index: 1000;
+    user-select: none;
+}
+
+@keyframes damage-animation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) rotate(10deg);
     }
 }

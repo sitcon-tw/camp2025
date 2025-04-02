@@ -106,6 +106,21 @@ let yearClickCount = 0;
 let yearClickTimeout;
 const yearElement = document.getElementById('year');
 
+// Add damage number effect when clicking year
+function createDamageNumber(x, y) {
+    const damageNumber = document.createElement('div');
+    damageNumber.classList.add('damage-number');
+    damageNumber.textContent = '1'; // This is the damage number, you can change it to any text you want like "SITCON"
+    damageNumber.style.left = `${x}px`;
+    damageNumber.style.top = `${y}px`;
+    document.body.appendChild(damageNumber);
+    
+    // Remove element after animation completes
+    setTimeout(() => {
+        document.body.removeChild(damageNumber);
+    }, 1000);
+}
+
 function show404Page() {
     document.body.classList.add('easter-egg');
     setTimeout(() => {
@@ -113,7 +128,10 @@ function show404Page() {
     }, 4000);
 }
 
-yearElement.addEventListener('click', () => {
+yearElement.addEventListener('click', (e) => {
+    // Create the damage number at click position
+    createDamageNumber(e.clientX, e.clientY);
+    
     clearTimeout(yearClickTimeout);
     yearClickCount++;
     
@@ -130,6 +148,11 @@ yearElement.addEventListener('click', () => {
 // Add touch support for mobile
 yearElement.addEventListener('touchend', (e) => {
     e.preventDefault(); // Prevent double triggering on mobile
+    
+    // Get touch position for damage number
+    const touch = e.changedTouches[0];
+    createDamageNumber(touch.clientX, touch.clientY);
+    
     clearTimeout(yearClickTimeout);
     yearClickCount++;
     
