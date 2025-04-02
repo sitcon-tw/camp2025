@@ -11,6 +11,13 @@
 
 :root {
     --theme: #f56f21;
+    --theme-dark: #201814;
+    --theme-light: #ccb7ad;
+    --theme-mid: #918375;
+    --text-light: #fff;
+    --text-dark: #000;
+    --cursor-stroke: var(--theme);
+    --cursor-fill: var(--theme-dark);
     --base: calc(1vw + 1vh);
     --scroll: 0;
 }
