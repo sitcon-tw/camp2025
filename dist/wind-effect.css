@@ -1,0 +1,63 @@
+/* Wind-blowing text effect */
+.wind-text {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.wind-text:hover {
+  transform: translateX(2px) translateY(-1px);
+}
+
+.wind-line {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(245, 111, 33, 0.8));
+  height: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: 0% 50%;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.wind-text:hover .wind-line {
+  opacity: 1;
+}
+
+/* Add a slight glow to the text when hovered */
+.wind-text:hover {
+  text-shadow: 0 0 5px rgba(245, 111, 33, 0.6);
+}
+
+@keyframes windWave {
+  0% {
+    transform: scaleX(1) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: scaleX(1.05) translateY(-2px) rotate(1deg);
+  }
+  100% {
+    transform: scaleX(1) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes windFlow {
+  0% {
+    transform: translateX(0) scaleX(1) rotate(0deg);
+    opacity: 0;
+    height: 1px;
+  }
+  20% {
+    opacity: 0.9;
+    height: 1.2px;
+  }
+  80% {
+    height: 0.8px;
+  }
+  100% {
+    transform: translateX(150px) scaleX(0.3) rotate(10deg);
+    opacity: 0;
+    height: 0.5px;
+  }
+} 
