@@ -100,3 +100,45 @@ scrollToTopBtn.addEventListener("click", () => {
 
 window.addEventListener("scroll", toggleScrollToTopButton);
 toggleScrollToTopButton(); // Check initial state
+
+// Easter egg: Click year 4 times to show 404 page
+let yearClickCount = 0;
+let yearClickTimeout;
+const yearElement = document.getElementById('year');
+
+function show404Page() {
+    document.body.classList.add('easter-egg');
+    setTimeout(() => {
+        document.body.classList.remove('easter-egg');
+    }, 4000);
+}
+
+yearElement.addEventListener('click', () => {
+    clearTimeout(yearClickTimeout);
+    yearClickCount++;
+    
+    if (yearClickCount === 4) {
+        show404Page();
+        yearClickCount = 0;
+    } else {
+        yearClickTimeout = setTimeout(() => {
+            yearClickCount = 0;
+        }, 3000); // Reset counter if not clicked 4 times within 3 seconds
+    }
+});
+
+// Add touch support for mobile
+yearElement.addEventListener('touchend', (e) => {
+    e.preventDefault(); // Prevent double triggering on mobile
+    clearTimeout(yearClickTimeout);
+    yearClickCount++;
+    
+    if (yearClickCount === 4) {
+        show404Page();
+        yearClickCount = 0;
+    } else {
+        yearClickTimeout = setTimeout(() => {
+            yearClickCount = 0;
+        }, 3000);
+    }
+});
