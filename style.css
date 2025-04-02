@@ -459,3 +459,34 @@ footer h3 {
 .fadeIn.ed {
     opacity: 1;
 }
+
+/* Scroll to top button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--theme);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s, background-color 0.3s ease;
+    transform: translateY(20px);
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#scrollToTopBtn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#scrollToTopBtn:hover {
+    background-color: #fff;
+}
