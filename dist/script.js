@@ -44,10 +44,25 @@ document.addEventListener("keydown", e => {
 
 // Scroll to top button
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+let scrollTimeout;
+let isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+// 監聽視窗大小變化
+window.addEventListener("resize", () => {
+    isMobile = window.matchMedia("(max-width: 768px)").matches;
+});
 
 function toggleScrollToTopButton() {
     if (window.scrollY > 300) {
         scrollToTopBtn.classList.add("visible");
+        
+        // 在手機版，當滾動停止後隱藏按鈕
+        if (isMobile) {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                scrollToTopBtn.classList.remove("visible");
+            }, 1500); // 1.5秒後隱藏
+        }
     } else {
         scrollToTopBtn.classList.remove("visible");
     }
