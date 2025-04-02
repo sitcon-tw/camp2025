@@ -29,22 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
   
   targetElement.appendChild(lineContainer);
   
-  // Create animated hover effect
-  targetElement.addEventListener('mouseenter', () => {
-    animateWindLines(lineContainer.querySelectorAll('.wind-line'));
-  });
+  // Remove mouseenter event and replace with continuous animation
   
-  // Also trigger animation at regular intervals for ambient effect
-  setInterval(() => {
-    if (Math.random() > 0.7) { // 30% chance of wind gust
-      animateWindLines(lineContainer.querySelectorAll('.wind-line'), 0.5); // Reduced intensity
-    }
-  }, 4000);
-  
-  // Trigger immediately once
-  setTimeout(() => {
+  // Create a continuous animation function
+  function startContinuousWindAnimation() {
+    // Initial animation
     animateWindLines(lineContainer.querySelectorAll('.wind-line'), 0.7);
-  }, 1000);
+    
+    // Continuous animation with varying intensity
+    setInterval(() => {
+      const intensity = 0.5 + Math.random() * 0.5; // Random intensity between 0.5-1.0
+      animateWindLines(lineContainer.querySelectorAll('.wind-line'), intensity);
+    }, 3000); // Play animation every 3 seconds
+  }
+  
+  // Start continuous animation
+  startContinuousWindAnimation();
   
   // Add subtle wave animation to the text
   targetElement.style.animation = 'windWave 5s ease-in-out infinite';
@@ -80,8 +80,8 @@ function animateWindLines(lines, intensityFactor = 1) {
     const duration = (0.8 + Math.random() * 1.2) * intensityFactor;
     const delay = Math.random() * 0.4;
     
-    // Randomly don't animate some lines for a more natural effect
-    if (Math.random() > 0.2) {
+    // Animate most lines for continuous effect
+    if (Math.random() > 0.1) { // Increased probability (90% chance to animate)
       line.style.animation = `windFlow ${duration}s ease-out ${delay}s`;
       
       // Remove animation after it completes
