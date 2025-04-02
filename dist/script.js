@@ -45,28 +45,51 @@ document.addEventListener("keydown", e => {
 // Scroll to top button
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 let scrollTimeout;
-let isMobile = window.matchMedia("(max-width: 768px)").matches;
+let isMobile = window.innerWidth <= 768;
 
-// 監聽視窗大小變化
-window.addEventListener("resize", () => {
-    isMobile = window.matchMedia("(max-width: 768px)").matches;
-});
+// Use more reliable method to detect device type and monitor window size changes
+function checkDeviceSize() {
+    isMobile = window.innerWidth <= 768;
+}
+
+window.addEventListener("resize", checkDeviceSize);
+window.addEventListener("orientationchange", checkDeviceSize);
+
+function hideButtonAfterDelay() {
+    if (isMobile) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            scrollToTopBtn.classList.remove("visible");
+        }, 1500); // Hide after 1.5 seconds
+    }
+}
 
 function toggleScrollToTopButton() {
     if (window.scrollY > 300) {
         scrollToTopBtn.classList.add("visible");
         
-        // 在手機版，當滾動停止後隱藏按鈕
-        if (isMobile) {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                scrollToTopBtn.classList.remove("visible");
-            }, 1500); // 1.5秒後隱藏
-        }
+        // For mobile devices, hide button after scrolling stops
+        hideButtonAfterDelay();
     } else {
         scrollToTopBtn.classList.remove("visible");
     }
 }
+
+// Add touch event handling
+let touchStartY = 0;
+let touchEndY = 0;
+
+window.addEventListener("touchstart", (e) => {
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener("touchend", (e) => {
+    touchEndY = e.changedTouches[0].clientY;
+    // Trigger hide logic after touch ends
+    if (Math.abs(touchStartY - touchEndY) > 5) { // Significant scroll detected
+        hideButtonAfterDelay();
+    }
+}, { passive: true });
 
 scrollToTopBtn.addEventListener("click", () => {
     window.scrollTo({
