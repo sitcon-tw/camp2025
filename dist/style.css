@@ -734,7 +734,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
 /* Code of Conduct Styles */
 .coc {
     padding: 4rem 2rem;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -743,7 +743,6 @@ body:has(.coc) header {
     text-align: center;
     padding: 8vh 2rem;
     min-height: auto;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
 }
 
 body:has(.coc) header h1 {
