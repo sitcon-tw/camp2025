@@ -730,3 +730,76 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
         padding: 0.25rem 0.6rem;
     }
 }
+
+/* Code of Conduct Styles */
+.coc {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Code of Conduct Header */
+body:has(.coc) header {
+    text-align: center;
+    padding: 8vh 2rem;
+    min-height: auto;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+}
+
+body:has(.coc) header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transform: none;
+    line-height: 1.2;
+}
+
+body:has(.coc) header h1 span {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--theme);
+    transform: none;
+    margin-top: 0.5rem;
+}
+
+body:has(.coc) header #logo {
+    width: calc(3 * var(--base));
+    padding-top: 0;
+    margin-bottom: 2rem;
+}
+
+.coc h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--theme);
+}
+
+.coc p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.coc ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.coc li {
+    position: relative;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.coc li::before {
+    content: "•";
+    color: var(--theme);
+    position: absolute;
+    left: -1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .coc {
+        padding: 2rem 1rem;
+    }
+}
