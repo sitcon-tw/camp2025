@@ -6,76 +6,92 @@ const ad = () =>
 
 ad();
 
-// Scroll
-window.addEventListener("scroll", function () {
-    let scroll = window.scrollY;
+// Debounce function to limit how often a function can be called
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle function to limit how often a function can be called
+function throttle(func, limit) {
+    let inThrottle;
+    return function executedFunction(...args) {
+        if (!inThrottle) {
+            func(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Optimized scroll handler
+const handleScroll = debounce(() => {
+    const scroll = window.scrollY;
     document.documentElement.style.setProperty("--scroll", scroll);
-});
+}, 16); // ~60fps
 
-// Animate on Scroll
-function isElementInViewport(el) {
+// Optimized viewport check
+const isElementInViewport = (el) => {
     const rect = el.getBoundingClientRect();
-    return rect.bottom < 0 || rect.top > window.innerHeight;
-}
+    return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+    );
+};
 
-function addClassToVisibleElements() {
-    var aosElements = document.querySelectorAll(".aos");
-    aosElements.forEach(function (aosElement) {
-        if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
-        else aosElement.classList.remove("ed");
+// Optimized AOS handler
+const handleAOS = throttle(() => {
+    const aosElements = document.querySelectorAll(".aos");
+    aosElements.forEach((element) => {
+        if (isElementInViewport(element)) {
+            element.classList.add("ed");
+        } else {
+            element.classList.remove("ed");
+        }
     });
-}
+}, 100);
 
-document.addEventListener("scroll", addClassToVisibleElements);
-addClassToVisibleElements();
+// Initialize scroll handlers
+window.addEventListener("scroll", handleScroll, { passive: true });
+window.addEventListener("scroll", handleAOS, { passive: true });
+handleAOS(); // Initial check
 
-document.addEventListener("keydown", e => {
-    // Check for common DevTools shortcuts
-    if (
-        // Ctrl+Shift+I (Windows/Linux) or Cmd+Option+I (Mac)
-        (e.ctrlKey && e.shiftKey && e.key === "I") ||
-        // Ctrl+Shift+J (Windows/Linux) or Cmd+Option+J (Mac)
-        (e.ctrlKey && e.shiftKey && e.key === "J") ||
-        // F12
-        e.key === "F12"
-    )
-        ad();
-});
+// Optimized device size check
+let isMobile = window.innerWidth <= 768;
+const checkDeviceSize = debounce(() => {
+    isMobile = window.innerWidth <= 768;
+}, 250);
 
-// Scroll to top button
+window.addEventListener("resize", checkDeviceSize, { passive: true });
+window.addEventListener("orientationchange", checkDeviceSize, { passive: true });
+
+// Optimized scroll to top button
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 let scrollTimeout;
-let isMobile = window.innerWidth <= 768;
 
-// Use more reliable method to detect device type and monitor window size changes
-function checkDeviceSize() {
-    isMobile = window.innerWidth <= 768;
-}
-
-window.addEventListener("resize", checkDeviceSize);
-window.addEventListener("orientationchange", checkDeviceSize);
-
-function hideButtonAfterDelay() {
+const hideButtonAfterDelay = debounce(() => {
     if (isMobile) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            scrollToTopBtn.classList.remove("visible");
-        }, 1500); // Hide after 1.5 seconds
+        scrollToTopBtn.classList.remove("visible");
     }
-}
+}, 1500);
 
-function toggleScrollToTopButton() {
+const toggleScrollToTopButton = throttle(() => {
     if (window.scrollY > 300) {
         scrollToTopBtn.classList.add("visible");
-        
-        // For mobile devices, hide button after scrolling stops
         hideButtonAfterDelay();
     } else {
         scrollToTopBtn.classList.remove("visible");
     }
-}
+}, 100);
 
-// Add touch event handling
+// Touch event handling
 let touchStartY = 0;
 let touchEndY = 0;
 
@@ -85,8 +101,7 @@ window.addEventListener("touchstart", (e) => {
 
 window.addEventListener("touchend", (e) => {
     touchEndY = e.changedTouches[0].clientY;
-    // Trigger hide logic after touch ends
-    if (Math.abs(touchStartY - touchEndY) > 5) { // Significant scroll detected
+    if (Math.abs(touchStartY - touchEndY) > 5) {
         hideButtonAfterDelay();
     }
 }, { passive: true });
@@ -98,61 +113,41 @@ scrollToTopBtn.addEventListener("click", () => {
     });
 });
 
-window.addEventListener("scroll", toggleScrollToTopButton);
-toggleScrollToTopButton(); // Check initial state
+window.addEventListener("scroll", toggleScrollToTopButton, { passive: true });
+toggleScrollToTopButton();
 
-// Easter egg: Click year 4 times to show 404 page
+// Optimized year click handler
 let yearClickCount = 0;
 let yearClickTimeout;
 const yearElement = document.getElementById('year');
 
-// Add damage number effect when clicking year
-function createDamageNumber(x, y) {
+const createDamageNumber = (x, y) => {
     const damageNumber = document.createElement('div');
     damageNumber.classList.add('damage-number');
-    damageNumber.textContent = '1'; // This is the damage number, you can change it to any text you want like "SITCON"
+    damageNumber.textContent = '1';
     damageNumber.style.left = `${x}px`;
     damageNumber.style.top = `${y}px`;
     document.body.appendChild(damageNumber);
     
-    // Remove element after animation completes
+    requestAnimationFrame(() => {
+        damageNumber.style.opacity = '0';
+        damageNumber.style.transform = 'translateY(-50px)';
+    });
+    
     setTimeout(() => {
         document.body.removeChild(damageNumber);
     }, 1000);
-}
+};
 
-function show404Page() {
+const show404Page = () => {
     document.body.classList.add('easter-egg');
     setTimeout(() => {
         document.body.classList.remove('easter-egg');
     }, 4000);
-}
+};
 
-yearElement.addEventListener('click', (e) => {
-    // Create the damage number at click position
-    createDamageNumber(e.clientX, e.clientY);
-    
-    clearTimeout(yearClickTimeout);
-    yearClickCount++;
-    
-    if (yearClickCount === 4) {
-        show404Page();
-        yearClickCount = 0;
-    } else {
-        yearClickTimeout = setTimeout(() => {
-            yearClickCount = 0;
-        }, 3000); // Reset counter if not clicked 4 times within 3 seconds
-    }
-});
-
-// Add touch support for mobile
-yearElement.addEventListener('touchend', (e) => {
-    e.preventDefault(); // Prevent double triggering on mobile
-    
-    // Get touch position for damage number
-    const touch = e.changedTouches[0];
-    createDamageNumber(touch.clientX, touch.clientY);
-    
+const handleYearClick = (x, y) => {
+    createDamageNumber(x, y);
     clearTimeout(yearClickTimeout);
     yearClickCount++;
     
@@ -163,5 +158,26 @@ yearElement.addEventListener('touchend', (e) => {
         yearClickTimeout = setTimeout(() => {
             yearClickCount = 0;
         }, 3000);
+    }
+};
+
+yearElement.addEventListener('click', (e) => {
+    handleYearClick(e.clientX, e.clientY);
+});
+
+yearElement.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    const touch = e.changedTouches[0];
+    handleYearClick(touch.clientX, touch.clientY);
+});
+
+// DevTools detection
+document.addEventListener("keydown", e => {
+    if (
+        (e.ctrlKey && e.shiftKey && e.key === "I") ||
+        (e.ctrlKey && e.shiftKey && e.key === "J") ||
+        e.key === "F12"
+    ) {
+        ad();
     }
 });
