@@ -29,11 +29,6 @@
         </script>
         <!-- End Google Tag Manager -->
         <script type="module" src="./components/index.js"></script>
-        <!-- YouTube 優化：預先連接到 YouTube 資源 -->
-        <link rel="preconnect" href="https://www.youtube.com">
-        <link rel="preconnect" href="https://i.ytimg.com">
-        <script type="module" crossorigin src="./assets/index-9TafUGYx.js"></script>
-        <link rel="stylesheet" crossorigin href="./assets/index-TnmPfYlL.css">
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
@@ -132,14 +127,24 @@
                     夏令營的精彩內容！
                 </p>
                 <div class="videos">
-                    <div class="youtube-lazy-load" data-videoid="b7r7DiEWsvA">
-                        <img src="https://i.ytimg.com/vi/b7r7DiEWsvA/hqdefault.jpg" alt="YouTube Video Thumbnail" loading="lazy">
-                        <div class="play-button"></div>
-                    </div>
-                    <div class="youtube-lazy-load" data-videoid="22tBfn5gaAc">
-                        <img src="https://i.ytimg.com/vi/22tBfn5gaAc/hqdefault.jpg" alt="YouTube Video Thumbnail" loading="lazy">
-                        <div class="play-button"></div>
-                    </div>
+                    <iframe
+                        src="https://www.youtube.com/embed/b7r7DiEWsvA?si=pcBYvAPURgmFSCth"
+                        title="YouTube video player"
+                        loading="lazy"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                    <iframe
+                        src="https://www.youtube.com/embed/22tBfn5gaAc?si=dYiU2ZwBxLrBLXeV"
+                        title="YouTube video player"
+                        loading="lazy"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
                 </div>
             </section>
             <section id="about">
