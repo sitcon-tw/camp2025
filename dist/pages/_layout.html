@@ -1,0 +1,76 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SITCON 夏令營 2025</title>
+        <meta name="description" content="SITCON Camp 2025" />
+        <meta name="keywords" content="SITCON Camp 2025" />
+        <meta name="author" content="SITCON" />
+        
+        <!-- Preconnect to Google services -->
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+        
+        <!-- Preload critical resources -->
+        <link rel="preload" href="/img/logo.svg" as="image" />
+        <link rel="preload" href="/style.css" as="style" />
+        
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="stylesheet" href="/wind-effect.css" />
+        
+        <script type="module" src="/components/index.js" defer></script>
+        
+        <!-- Use CDN version of lite-youtube -->
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+    </head>
+    <body>
+        <main>
+            <navigation-bar></navigation-bar>
+            
+            <!-- Page content slot -->
+            <div id="page-content">
+                <!-- Content will be inserted here -->
+            </div>
+            
+            <site-footer></site-footer>
+        </main>
+        <scroll-to-top></scroll-to-top>
+        
+        <!-- Move non-critical scripts to the end of body -->
+        <script src="/script.js" defer></script>
+        <script src="/wind-effect.js" defer></script>
+        
+        <!-- Deferred Google Tag Manager -->
+        <script>
+            window.addEventListener('load', function() {
+                // Google Tag Manager
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        "gtm.start": new Date().getTime(),
+                        event: "gtm.js",
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != "dataLayer" ? "&l=" + l : "";
+                    j.async = true;
+                    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, "script", "dataLayer", "GTM-NKHHNVV");
+
+                // Add noscript iframe dynamically
+                var noscript = document.createElement('noscript');
+                var iframe = document.createElement('iframe');
+                iframe.src = "https://www.googletagmanager.com/ns.html?id=GTM-NKHHNVV";
+                iframe.height = "0";
+                iframe.width = "0";
+                iframe.style.display = "none";
+                iframe.style.visibility = "hidden";
+                noscript.appendChild(iframe);
+                document.body.appendChild(noscript);
+            });
+        </script>
+    </body>
+</html> 
