@@ -232,7 +232,7 @@ section h2 {
 #intro::before {
     content: "";
     display: block;
-    width: 300%;
+    width: 300vw;
     height: 100%;
     background-color: #000000c2;
     background-size: cover;
