@@ -727,6 +727,16 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
     width: 100%;
 }
 
+.floating-nav a.current {
+    color: var(--theme);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.floating-nav a.current::before {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 @media (max-width: 768px) {
     .floating-nav {
         padding: 0.4rem 1.5rem;
