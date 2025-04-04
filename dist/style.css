@@ -313,15 +313,24 @@ h3 {
 
 .videos {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 3rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.videos iframe {
-    width: min(560px, 100%);
-    aspect-ratio: 16/9;
+@media (min-width: 768px) {
+    .videos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    lite-youtube {
+        flex: 1;
+        min-width: 300px;
+    }
 }
 
 #about > div {
@@ -801,4 +810,46 @@ body:has(.coc) header #logo {
     .coc {
         padding: 2rem 1rem;
     }
+}
+
+/* YouTube video styles */
+lite-youtube {
+    background-color: #000;
+    position: relative;
+    display: block;
+    contain: content;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+}
+
+.lite-youtube-fallback {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.lite-youtube-fallback::before {
+    display: block;
+    content: '';
+    border: solid transparent;
+    border-width: 2em 0 2em 3em;
+    border-left-color: var(--theme);
+}
+
+.lite-youtube-fallback:hover::before {
+    border-left-color: #fff;
+}
+
+.lite-youtube-fallback:focus {
+    outline: 2px solid var(--theme);
 }

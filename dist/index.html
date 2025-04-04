@@ -21,6 +21,9 @@
         <link rel="stylesheet" href="wind-effect.css" />
         
         <script type="module" src="./components/index.js" defer></script>
+        
+        <!-- Use CDN version of lite-youtube -->
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
     </head>
     <body>
         <main>
@@ -120,28 +123,29 @@
                     夏令營的精彩內容！
                 </p>
                 <div class="videos">
-                    <iframe
-                        src="https://www.youtube.com/embed/b7r7DiEWsvA?si=pcBYvAPURgmFSCth"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                        loading="lazy"
-                        width="560" 
-                        height="315"
-                    ></iframe>
-                    <iframe
-                        src="https://www.youtube.com/embed/22tBfn5gaAc?si=dYiU2ZwBxLrBLXeV"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                        loading="lazy"
-                        width="560" 
-                        height="315"
-                    ></iframe>
+                    <lite-youtube 
+                        videoid="b7r7DiEWsvA"
+                        videotitle="SITCON Camp 2023 活動紀錄"
+                        videoplay="觀看影片"
+                        posterquality="maxresdefault"
+                        autoload
+                    >
+                        <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=b7r7DiEWsvA">
+                            在 YouTube 觀看：SITCON Camp 2023 活動紀錄
+                        </a>
+                    </lite-youtube>
+                    
+                    <lite-youtube 
+                        videoid="22tBfn5gaAc"
+                        videotitle="SITCON Camp 2022 活動紀錄"
+                        videoplay="觀看影片"
+                        posterquality="maxresdefault"
+                        autoload
+                    >
+                        <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=22tBfn5gaAc">
+                            在 YouTube 觀看：SITCON Camp 2022 活動紀錄
+                        </a>
+                    </lite-youtube>
                 </div>
             </section>
             <section id="about">
