@@ -123,7 +123,7 @@ header .img.ed {
 
 #img3.ed {
     top: 45%;
-    right: -2%;
+    right: -8rem; /* 8rem did not work */
 }
 
 #logo {
