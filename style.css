@@ -116,9 +116,15 @@ header .img.ed {
 }
 
 #img3 {
+    position: absolute;
     top: 50%;
     right: -10%;
     transform: rotate(10deg) translate(0, calc(-50% - var(--scroll) * 0.3px));
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: rotate(10deg) translate(0, calc(-50% - var(--scroll) * 0.3px));
+    transition: all 1s ease-out;
 }
 
 #img3.ed {
@@ -206,7 +212,6 @@ h1 span {
 
 section {
     margin: auto;
-    max-width: 1200px;
 }
 
 section h2 {
@@ -219,28 +224,18 @@ section h2 {
 .intro-content {
     padding-inline: 2rem;
     max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #intro {
+    width: 100dvw;
     margin-bottom: 8rem;
     text-align: center;
     margin-inline: auto;
     position: relative;
     padding: 2rem;
-}
-
-#intro::before {
-    content: "";
-    display: block;
-    width: 300%;
-    height: 100%;
     background-color: #000000c2;
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: -100vw;
-    z-index: -1;
 }
 
 #intro .intro-content {
@@ -465,12 +460,20 @@ footer h3 {
     }
 
     #img3 {
+        position: absolute;
         bottom: 10%;
         top: auto;
+        right: -10%;
+        transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
     #img3.ed {
         bottom: 15%;
+        right: -2%;
         top: auto;
     }
     h1 {
