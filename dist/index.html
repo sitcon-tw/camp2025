@@ -9,38 +9,20 @@
         <meta name="description" content="SITCON Camp 2025" />
         <meta name="keywords" content="SITCON Camp 2025" />
         <meta name="author" content="SITCON" />
+        
+        <!-- Preconnect to Google services -->
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+        
+        <!-- Preload critical resources -->
+        <link rel="preload" href="img/logo.svg" as="image" />
+        <link rel="preload" href="style.css" as="style" />
+        
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="wind-effect.css" />
-        <!-- Google Tag Manager -->
-        <script>
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    "gtm.start": new Date().getTime(),
-                    event: "gtm.js",
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-NKHHNVV");
-        </script>
-        <!-- End Google Tag Manager -->
-        <script type="module" src="./components/index.js"></script>
+        
+        <script type="module" src="./components/index.js" defer></script>
     </head>
     <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript
-            ><iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-NKHHNVV"
-                height="0"
-                width="0"
-                style="display: none; visibility: hidden"
-            ></iframe
-        ></noscript>
-        <!-- End Google Tag Manager (noscript) -->
         <main>
             <navigation-bar></navigation-bar>
             <header>
@@ -49,30 +31,41 @@
                     alt="SITCON"
                     id="logo"
                     class="aos fadeIn"
+                    width="200"
+                    height="100"
                 />
                 <h1 class="aos fadeIn">
                     學生計算機<span>年會</span><span>夏令營</span><span id="year">2025</span>
                 </h1>
                 <div id="soon" class="aos fadeIn">
-                    <a href="https://hackmd.io/@SITCON/2025-camp-recruit" target="_blank">加入籌備團隊</a><a href="https://groups.google.com/g/sitcon-general/" target="_blank">訂閱電子報</a>
+                    <a href="https://hackmd.io/@SITCON/2025-camp-recruit" target="_blank" rel="noopener">加入籌備團隊</a><a href="https://groups.google.com/g/sitcon-general/" target="_blank" rel="noopener">訂閱電子報</a>
                 </div>
                 <img
                     id="img1"
                     class="img aos"
                     src="img/2023-1.webp"
                     alt="1SITCON Camp 2025"
+                    loading="lazy"
+                    width="auto"
+                    height="534"
                 />
                 <img
                     id="img2"
                     class="img aos"
                     src="img/2023-4.webp"
                     alt="2SITCON Camp 2025"
+                    loading="lazy"
+                    width="auto"
+                    height="534"
                 />
                 <img
                     id="img3"
                     class="img aos"
                     src="img/2023-6.webp"
                     alt="3SITCON Camp 2025"
+                    loading="lazy"
+                    width="auto"
+                    height="534"
                 />
                 <div id="marquee"></div>
             </header>
@@ -114,7 +107,7 @@
                     </p>
                 </div>
                 <figure class="intro-img aos fadeIn">
-                    <img src="img/2023-7.webp" alt="SITCON Camp 2025" />
+                    <img src="img/2023-7.webp" alt="SITCON Camp 2025" loading="lazy" width="600" height="400" />
                     <figcaption>SITCON Camp 2024</figcaption>
                 </figure>
             </section>
@@ -134,6 +127,9 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
+                        loading="lazy"
+                        width="560" 
+                        height="315"
                     ></iframe>
                     <iframe
                         src="https://www.youtube.com/embed/22tBfn5gaAc?si=dYiU2ZwBxLrBLXeV"
@@ -142,6 +138,9 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen
+                        loading="lazy"
+                        width="560" 
+                        height="315"
                     ></iframe>
                 </div>
             </section>
@@ -165,7 +164,40 @@
             <site-footer></site-footer>
         </main>
         <scroll-to-top></scroll-to-top>
-        <script src="./script.js"></script>
-        <script src="./wind-effect.js"></script>
+        
+        <!-- Move non-critical scripts to the end of body -->
+        <script src="./script.js" defer></script>
+        <script src="./wind-effect.js" defer></script>
+        
+        <!-- Deferred Google Tag Manager -->
+        <script>
+            window.addEventListener('load', function() {
+                // Google Tag Manager
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        "gtm.start": new Date().getTime(),
+                        event: "gtm.js",
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != "dataLayer" ? "&l=" + l : "";
+                    j.async = true;
+                    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, "script", "dataLayer", "GTM-NKHHNVV");
+
+                // Add noscript iframe dynamically
+                var noscript = document.createElement('noscript');
+                var iframe = document.createElement('iframe');
+                iframe.src = "https://www.googletagmanager.com/ns.html?id=GTM-NKHHNVV";
+                iframe.height = "0";
+                iframe.width = "0";
+                iframe.style.display = "none";
+                iframe.style.visibility = "hidden";
+                noscript.appendChild(iframe);
+                document.body.appendChild(noscript);
+            });
+        </script>
     </body>
 </html>
