@@ -41,4 +41,30 @@ class NavigationBar extends HTMLElement {
     }
 }
 
-customElements.define('navigation-bar', NavigationBar); 
+customElements.define('navigation-bar', NavigationBar);
+
+// Register this component with the PageRegistry for state management
+if (window.PageRegistry) {
+    const updateNavigation = (path) => {
+        const navbars = document.querySelectorAll('navigation-bar');
+        navbars.forEach(navbar => {
+            if (navbar.updateActiveState) {
+                navbar.updateActiveState(path);
+            }
+        });
+    };
+    
+    // Listen for page registration
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.PageRegistry) {
+            // Register handler for all pages
+            ['/', '/index.html', '/coc.html'].forEach(path => {
+                window.PageRegistry.registerPage(path, {
+                    onLoad: ({ path }) => {
+                        updateNavigation(path);
+                    }
+                });
+            });
+        }
+    });
+} 
