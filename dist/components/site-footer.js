@@ -1,6 +1,18 @@
 class SiteFooter extends HTMLElement {
     constructor() {
         super();
+        this.render();
+    }
+    
+    connectedCallback() {
+        // Listen for PJAX navigation events
+        window.addEventListener('pjax:complete', () => {
+            // The footer shouldn't need to change content, but we can ensure it's properly rendered
+            this.render();
+        });
+    }
+    
+    render() {
         this.innerHTML = `
             <footer>
                 <div class="footer-container">

@@ -8,6 +8,7 @@
         <meta name="keywords" content="SITCON Camp 2025, Code of Conduct" />
         <meta name="author" content="SITCON" />
         <link rel="stylesheet" href="style.css" />
+        <script type="module" src="./components/index.js" defer></script>
         <!-- Google Tag Manager -->
         <script>
             (function (w, d, s, l, i) {
@@ -37,8 +38,12 @@
             ></iframe
         ></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        <main>
-            <navigation-bar></navigation-bar>
+        
+        <!-- Add PJAX handler to manage page transitions -->
+        <pjax-handler></pjax-handler>
+        
+        <navigation-bar></navigation-bar>
+        <main id="content">
             <div class="coc">
                 <header>
                     <img src="img/logo.svg" alt="SITCON" id="logo" />
@@ -90,7 +95,6 @@
             <site-footer></site-footer>
         </main>
         <scroll-to-top></scroll-to-top>
-        <script type="module" src="./components/index.js"></script>
         <script src="./script.js"></script>
     </body>
 </html> 
