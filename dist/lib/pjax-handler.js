@@ -390,10 +390,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Example of registering custom page handlers
-PageRegistry.registerPage('/', {
+PageRegistry.registerPage('/index.html', {
     onLoad: ({container}) => {
         console.log('Home page loaded');
         // Any special initialization for home page
+        document.dispatchEvent(new Event('scroll'));
     }
 });
 
