@@ -367,6 +367,26 @@ class PjaxNavigator {
                 });
             }
             
+            // After content is replaced and before dispatching the complete event, check for index page
+            const isIndexPage = window.location.pathname.endsWith('/') || 
+                              window.location.pathname.endsWith('index.html') ||
+                              window.location.pathname.endsWith('index_en.html');
+            
+            if (isIndexPage) {
+                // Force immediate display of images and animated elements in the header
+                const headerImages = document.querySelectorAll('header .img');
+                headerImages.forEach(img => {
+                    img.classList.add('ed');
+                    img.style.opacity = '1';
+                });
+                
+                const headerElements = document.querySelectorAll('header .aos, header .fadeIn');
+                headerElements.forEach(el => {
+                    el.classList.add('ed');
+                    el.style.opacity = '1';
+                });
+            }
+            
             // Dispatch complete event
             window.dispatchEvent(new CustomEvent(PjaxConfig.eventNames.complete, { 
                 detail: { url, path, title: document.title }

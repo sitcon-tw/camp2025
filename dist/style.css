@@ -737,6 +737,25 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.floating-nav a.lang-switch {
+    background-color: var(--theme);
+    color: var(--text-dark);
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floating-nav a.lang-switch:hover {
+    background-color: var(--text-light);
+    transform: scale(1.05);
+}
+
+.floating-nav a.lang-switch::before {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .floating-nav {
         padding: 0.4rem 1.5rem;
