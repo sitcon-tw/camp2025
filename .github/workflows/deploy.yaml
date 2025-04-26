@@ -17,6 +17,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true
       - name: Trigger workflow in other repo
         uses: actions/github-script@v6
         with:
