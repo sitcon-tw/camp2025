@@ -1,0 +1,44 @@
+# SITCON Camp 2025
+
+> SITCON Camp 2025 是一個由學生自發舉辦的夏令營，主題為「404 Not Found：青春不該 throw error」，結合知識與實作，涵蓋 AI、資安、前端、開源等多元領域，並強調社群互動與自我成長。
+
+## Important Notes
+
+- 主辦單位：SITCON 學生計算機年會（學生自發性技術研討會組織）、開放文化基金會（推廣開源文化的非營利組織）、陽明交通大學資訊工程系學會、陽明交通大學資訊工程系
+- 活動地點：國立陽明交通大學光復校區（位於新竹市東區大學路1001號，交通便利，鄰近高鐵新竹站）
+- 活動日期：2025/07/09（三）~ 07/13（日），五天四夜全密集式課程（含住宿、三餐及教材）
+- 報名日期：即日起 ~ 2025/5/31（六）23:59 止，採審核制，非先報先錄取，預計招收學員 54 名
+- 早鳥優惠：8100元/人（5/11 前報名可享此優惠，可與團報優惠同時適用）
+- 個人報名：9000元/人
+- 團體報名：2人 8500元/人、3人 8250元/人、4人 8000元/人
+
+## Docs
+
+- [官方網站首頁](https://sitcon.camp/2025/): SITCON Camp 2025 首頁，包含最新公告、活動概覽和報名入口
+- [課程活動預覽](https://sitcon.camp/2025/#課程活動): 詳細介紹包含主線課程、廣度課程、Hackathon、視界咖啡館等完整活動內容
+- [行為準則（Code of Conduct）](https://sitcon.camp/2025/coc): 營隊行為規範與準則，說明參與者應遵守的原則與不當行為的處理方式
+- [關於 SITCON](https://sitcon.camp/2025/about): SITCON 學生計算機年會的組織介紹、歷史沿革與使命願景
+- [籌備團隊](https://sitcon.camp/2025/about): 營隊籌備團隊成員介紹，包含總召、各組負責人與工作人員名單
+- [歷年 SITCON Camp 網站 2024](https://sitcon.camp/2024): 2024 年度夏令營網站，可查看去年課程主題與活動內容
+- [歷年 SITCON Camp 網站 2023](https://sitcon.camp/2023): 2023 年度夏令營網站，提供歷史課程規劃參考
+- [加入行事曆](https://sitcon.camp/2025/sitconcamp2025.ics): 下載包含報名截止、正取公告、活動日期等重要時程的行事曆檔案
+
+## Examples
+
+- [學員回饋](https://sitcon.camp/2025/#過往紀錄與回饋): 歷屆學員參與心得分享、成果展示與活動精彩照片集錦，展現營隊實際體驗
+
+## Optional
+
+- [立即報名](https://sitcon.kktix.cc/events/sitcon-camp2025): KKTIX 報名系統頁面，提供線上表單填寫與繳費資訊
+- [報名簡章](https://drive.google.com/file/d/1g6OSBT0yZIpOjKk5tkzgFOv-mcpBrPLd/view): 詳細報名規則、流程、資格條件、錄取方式與注意事項說明
+- [退費說明文件](https://drive.google.com/file/d/1A193ekw7DtCgfMmxsICeT4gO2pWYGd4q/view): 各種情況下的退費政策說明、比例與申請退費流程
+- [報名費用補助辦法](https://drive.google.com/file/d/1A193ekw7DtCgfMmxsICeT4gO2pWYGd4q/view): 弱勢學生補助方案申請資格、流程與補助金額說明
+
+## Contact & Social
+
+- Email：camp@sitcon.org（營隊相關問題、合作提案、緊急聯繫專用信箱）
+- [Telegram 群組](https://t.me/sitcon_tw): 營隊最新資訊、活動公告與學員、講師即時交流平台
+- [Facebook 粉專](https://www.facebook.com/SITCONtw): 官方最新消息發布、活動花絮分享與粉絲互動平台
+- [Instagram](https://www.instagram.com/sitcon.tw/): 營隊活動照片、影片花絮、學員心得與日常紀錄
+- [YouTube 頻道](https://www.youtube.com/user/SITCONtw): 歷年營隊回顧影片、活動紀錄與部分課程錄影資料
+- [Plurk](https://www.plurk.com/SITCON): 營隊快訊、趣味互動與籌備團隊日常分享
